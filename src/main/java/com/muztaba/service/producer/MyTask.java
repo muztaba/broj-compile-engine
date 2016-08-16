@@ -1,4 +1,4 @@
-package com.muztaba;
+package com.muztaba.service.producer;
 
 import com.muztaba.model.User;
 import com.muztaba.service.UserService;

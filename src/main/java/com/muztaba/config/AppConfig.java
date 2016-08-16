@@ -1,7 +1,7 @@
 package com.muztaba.config;
 
-import com.muztaba.MyTask;
-import com.muztaba.MyTaskImpl;
+import com.muztaba.service.producer.MyTask;
+import com.muztaba.service.producer.MyTaskImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

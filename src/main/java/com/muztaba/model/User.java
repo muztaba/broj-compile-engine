@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by seal on 8/13/2016.
@@ -22,4 +23,11 @@ public class User {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "status")
+    private boolean status;
+
+    @Column(name = "time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date time;
 }

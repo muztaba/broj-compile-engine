@@ -1,12 +1,10 @@
 package com.muztaba;
 
 import com.muztaba.config.AppConfig;
-import com.muztaba.model.User;
-import com.muztaba.service.UserService;
+import com.muztaba.service.producer.MyTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * Hello world!
