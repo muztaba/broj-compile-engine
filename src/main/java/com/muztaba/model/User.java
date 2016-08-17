@@ -30,4 +30,7 @@ public class User {
     @Column(name = "time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
+
+    @Column(name = "file", length = 100000)
+    private byte[] file;
 }

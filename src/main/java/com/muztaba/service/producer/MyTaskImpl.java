@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +33,21 @@ public class MyTaskImpl implements MyTask {
         User user = new User();
         user.setName("seal-" + String.valueOf(count++));
         user.setTime(new Date());
-//        logger.info("{}", user);
+        user.setFile(readFile());
         userService.post(user);
+    }
+
+    private byte[] readFile() {
+        String path = "input.txt";
+        File file = new File(path);
+        byte[] bytes = new byte[(int) file.length()];
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(bytes);
+            fileInputStream.close();
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return bytes;
     }
 }
