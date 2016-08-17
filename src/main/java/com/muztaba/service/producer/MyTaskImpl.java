@@ -33,21 +33,4 @@ public class MyTaskImpl implements MyTask {
 //        logger.info("{}", user);
         userService.post(user);
     }
-
-    @Scheduled(fixedDelay = 4000)
-    public void scheduledRetrieve() {
-        List<User> userList = userService.getUserList();
-        logger.info("List size {}", userList.size());
-        logger.info("{}",userList);
-        List<Long> idList = getUserId(userList);
-        userService.usersUpdate(idList);
-    }
-
-    private List<Long> getUserId(List<User> list) {
-        List<Long> longList = new ArrayList<Long>(list.size());
-        for (User i : list) {
-            longList.add(i.getId());
-        }
-        return longList;
-    }
 }
