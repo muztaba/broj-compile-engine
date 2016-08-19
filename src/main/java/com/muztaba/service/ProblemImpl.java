@@ -25,6 +25,12 @@ public class ProblemImpl implements ProblemService {
     @Override
     public void post(Problem problem) {
         sessionFactory.getCurrentSession()
-                .save(problem);
+                .saveOrUpdate(problem);
+    }
+
+    @Override
+    public Problem get(long id) {
+        return sessionFactory.getCurrentSession()
+                .get(Problem.class, id);
     }
 }

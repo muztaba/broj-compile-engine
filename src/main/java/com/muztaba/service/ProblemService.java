@@ -11,4 +11,5 @@ public interface ProblemService {
 
     void post(Problem problem);
 
+    Problem get(long id);
 }

@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -27,6 +26,12 @@ public class Problem {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "in_file", length = 100000)
+    private byte[] inputFile;
+
+    @Column(name = "res_file", length = 100000)
+    private byte[] resultFile;
 
 
     @Column(name = "time")
