@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.Random;
 /**
  * Created by seal on 8/13/2016.
  */
+@Component
 public class MyTaskImpl implements MyTask {
 
     private static final Logger logger = LoggerFactory.getLogger(MyTaskImpl.class);

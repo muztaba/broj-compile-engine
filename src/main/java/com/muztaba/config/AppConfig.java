@@ -15,8 +15,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = "com.muztaba")
 public class AppConfig {
 
-    @Bean
+/*    @Bean
     public MyTask getbean() {
         return new MyTaskImpl();
-    }
+    }*/
 }
