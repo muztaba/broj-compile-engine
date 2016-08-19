@@ -1,5 +1,7 @@
 package com.muztaba.config;
 
+import com.muztaba.model.Problem;
+import com.muztaba.model.Submission;
 import com.muztaba.model.User;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,12 +54,16 @@ public class DatabaseConfig {
     public LocalSessionFactoryBean hibernate5SessionFactoryBean() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource((DataSource) appContext.getBean("DataSource"));
-        localSessionFactoryBean.setAnnotatedClasses(User.class);
+        localSessionFactoryBean.setAnnotatedClasses(
+                User.class,
+                Problem.class,
+                Submission.class
+        );
 
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         //properties.put("hibernate.current_session_context_class","thread");
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
 
         localSessionFactoryBean.setHibernateProperties(properties);
         return localSessionFactoryBean;
