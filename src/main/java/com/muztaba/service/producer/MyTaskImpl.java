@@ -7,6 +7,7 @@ import com.muztaba.service.ProblemService;
 import com.muztaba.service.SubmissionService;
 import com.muztaba.service.UserService;
 import com.muztaba.service.producer.MyTask;
+import com.muztaba.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class MyTaskImpl implements MyTask {
         }*/
 
     private static final Random r = new Random();
+    private static final String SRC_PATH = "/home/seal/test/A.cpp";
 
     @Scheduled(fixedDelay = 100)
     public void scheduledTask() {
@@ -54,6 +56,7 @@ public class MyTaskImpl implements MyTask {
         submission.setProblem(problem);
         submission.setUserName("seal-" + String.valueOf(++count));
         submission.setTime(new Date());
+        submission.setSrcFile(FileUtil.readFileAsByte(SRC_PATH));
 //        logger.info("{}", submission);
         submissionService.post(submission);
 
