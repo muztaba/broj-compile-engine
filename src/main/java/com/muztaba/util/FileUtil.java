@@ -25,4 +25,12 @@ public class FileUtil {
             throw new RuntimeException(e);
         }
     }
+
+    public static void createDirectory(String path) {
+        try {
+            Files.createDirectory(Paths.get(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
