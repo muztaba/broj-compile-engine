@@ -15,6 +15,8 @@ public interface SubmissionService {
 
     List<Submission> getSubmissionList();
 
+    List<Submission> getSubmissionList(int size);
+
     void submissionUpdate(List<Long> list);
 
 }

@@ -1,5 +1,8 @@
 package com.muztaba.util;
 
+import com.muztaba.model.Submission;
+import com.muztaba.service.compiler.util.DTO;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -30,7 +33,15 @@ public class FileUtil {
         try {
             Files.createDirectory(Paths.get(path));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+    }
+
+    public static void batchCreate(Submission submission, DTO dto) {
+
+        FileUtil.createDirectory(dto.getWorkingDir());
+        FileUtil.writeByteToFile(submission.getSrcFile(), dto.getSrcPath());
+        FileUtil.writeByteToFile(submission.getProblem().getInputFile(), dto.getInputPath());
+        FileUtil.writeByteToFile(submission.getProblem().getResultFile(), dto.getOutputFile());
     }
 }

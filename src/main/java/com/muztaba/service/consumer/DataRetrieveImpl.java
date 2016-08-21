@@ -1,9 +1,10 @@
 package com.muztaba.service.consumer;
 
 import com.muztaba.model.Submission;
-import com.muztaba.model.User;
 import com.muztaba.service.SubmissionService;
 import com.muztaba.service.UserService;
+import com.muztaba.service.processor.QueueService;
+import com.muztaba.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * Created by seal on 8/17/2016.
@@ -21,29 +24,13 @@ public class DataRetrieveImpl implements DataRetrieve{
 
     private static final Logger logger = LoggerFactory.getLogger(DataRetrieveImpl.class);
 
-    @Autowired
-    UserService userService;
+    private final BlockingDeque<Submission> q = new LinkedBlockingDeque<>();
 
     @Autowired
     SubmissionService submissionService;
-/*
-    @Scheduled(fixedDelay = 4000)
-    public void scheduledRetrieve() {
-        List<User> userList = userService.getUserList();
-        logger.info("List size {}", userList.size());
-        logger.info("{}",userList);
-        List<Long> idList = getUserId(userList);
-        userService.usersUpdate(idList);
-    }
-    */
 
-/*    private List<Long> getUserId(List<User> list) {
-        List<Long> longList = new ArrayList<>(list.size());
-        for (User i : list) {
-            longList.add(i.getId());
-        }
-        return longList;
-    }*/
+    @Autowired
+    QueueService<Submission> queue;
 
     private List<Long> getUserId(List<Submission> list) {
         List<Long> longList = new ArrayList<>(list.size());
@@ -53,12 +40,54 @@ public class DataRetrieveImpl implements DataRetrieve{
         return longList;
     }
 
-    @Scheduled(fixedDelay = 4000)
+    private static final String DIR_PATH = "/home/seal/test1/";
+
+    private void createDir(List<Submission> submissions) {
+        for (Submission i : submissions) {
+            String path = DIR_PATH + i.getId();
+            FileUtil.createDirectory(path);
+            logger.info("Directory create at {}", path);
+            FileUtil.writeByteToFile(i.getSrcFile(), path + "/A.cpp");
+            FileUtil.writeByteToFile(i.getProblem().getInputFile(), path + "/input.in");
+            FileUtil.writeByteToFile(i.getProblem().getResultFile(), path + "/output.out");
+        }
+    }
+
+    private void print(List<Submission> submissions) {
+        for (Submission submission : submissions) {
+            System.out.println(submission);
+        }
+    }
+
+/*    @Scheduled(fixedDelay = 4000)
     public void scheduledRetrieve() {
         List<Submission> submissions = submissionService.getSubmissionList();
+        createDir(submissions);
         logger.info("List size {}", submissions.size());
-        logger.info("{}",submissions);
+//        logger.info("{}",submissions);
+//        print(submissions);
         List<Long> idList = getUserId(submissions);
         submissionService.submissionUpdate(idList);
+    }*/
+
+    @Scheduled(fixedDelay = 4000)
+    public void scheduledRetrieve() {
+        int required = 2;
+        if (required != 0) {
+            List<Submission> submissions = submissionService.getSubmissionList(required);
+//            logger.info("List size {}", submissions.size());
+            queue.add(submissions);
+//        logger.info("{}",submissions);
+//        print(submissions);
+            List<Long> idList = getUserId(submissions);
+            submissionService.submissionUpdate(idList);
+        }
+    }
+
+
+    @Scheduled(fixedDelay = 2000)
+    public void test() {
+        /*List<Submission> submissions = queue.getList(2);
+        createDir(submissions);*/
     }
 }

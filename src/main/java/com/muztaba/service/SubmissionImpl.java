@@ -20,6 +20,8 @@ public class SubmissionImpl implements SubmissionService {
     @Autowired
     SessionFactory sessionFactory;
 
+    private static final int DEFAULT_RETRIEVE_RESULT = 5;
+    
     @Override
     public void post(Submission submission) {
         sessionFactory.getCurrentSession()
@@ -39,7 +41,18 @@ public class SubmissionImpl implements SubmissionService {
                 .createCriteria(Submission.class)
                 .add(Restrictions.eq("status", false))
                 .addOrder(Order.asc("time"))
-                .setMaxResults(5)
+                .setMaxResults(DEFAULT_RETRIEVE_RESULT)
+                .list();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Submission> getSubmissionList(int size) {
+        return sessionFactory.getCurrentSession()
+                .createCriteria(Submission.class)
+                .add(Restrictions.eq("status", false))
+                .addOrder(Order.asc("time"))
+                .setMaxResults(size)
                 .list();
     }
 

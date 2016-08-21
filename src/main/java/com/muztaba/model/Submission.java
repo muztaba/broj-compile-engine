@@ -35,6 +35,9 @@ public class Submission {
     @JoinColumn(referencedColumnName = "problem_id")
     private Problem problem;
 
+    @Column(name = "language")
+    private String lang;
+
     @Column(name = "src_file", length = 100000)
     private byte[] srcFile;
 
