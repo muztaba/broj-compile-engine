@@ -3,6 +3,7 @@ package com.muztaba.config;
 import com.muztaba.model.Problem;
 import com.muztaba.model.Submission;
 import com.muztaba.model.User;
+import com.muztaba.model.Verdict;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -57,7 +58,8 @@ public class DatabaseConfig {
         localSessionFactoryBean.setAnnotatedClasses(
                 User.class,
                 Problem.class,
-                Submission.class
+                Submission.class,
+                Verdict.class
         );
 
         Properties properties = new Properties();
