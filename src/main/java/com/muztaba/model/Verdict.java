@@ -23,9 +23,9 @@ public class Verdict {
     @Column(name = "verdict_id")
     private long id;
 
-    @Column(name = "submission")
+/*    @Column(name = "submission")
     @OneToOne(targetEntity = Submission.class)
-    private Submission submission;
+    private Submission submission;*/
 
     @Column(name = "verdict")
     @Enumerated(EnumType.STRING)

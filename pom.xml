@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring>4.2.5.RELEASE</spring>
+    <spring>4.3.1.RELEASE</spring>
     <spring-sec>4.0.4.RELEASE</spring-sec>
     <jjwt.version>0.6.0</jjwt.version>
     <apache-commons.version>3.0</apache-commons.version>

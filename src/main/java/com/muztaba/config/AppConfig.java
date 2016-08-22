@@ -1,5 +1,6 @@
 package com.muztaba.config;
 
+import com.muztaba.service.VerdictServiceImpl;
 import com.muztaba.service.producer.MyTask;
 import com.muztaba.service.producer.MyTaskImpl;
 import org.springframework.context.annotation.Bean;
@@ -14,9 +15,4 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @ComponentScan(basePackages = "com.muztaba")
 public class AppConfig {
-
-/*    @Bean
-    public MyTask getbean() {
-        return new MyTaskImpl();
-    }*/
 }

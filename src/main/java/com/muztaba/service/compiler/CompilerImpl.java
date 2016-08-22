@@ -37,7 +37,10 @@ public class CompilerImpl implements Compiler {
         ProcessBuilder execute = ProcessBuilderFactory.getExecutionProcessBuilder(dto);
         CompileStatus status = engine.execute(execute);
         logger.info("Execution Status {}", status);
-        return null;
+
+        Verdict verdict = new Verdict();
+        verdict.setCompileStatus(status);
+        return verdict;
     }
 
     private void makeDTO(Submission submission) {
@@ -49,6 +52,5 @@ public class CompilerImpl implements Compiler {
                 RESULT_FILE,
                 WORKING_DIR + submission.getId()
         );
-
     }
 }
