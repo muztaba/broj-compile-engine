@@ -40,6 +40,7 @@ public class CompilerImpl implements Compiler {
 
         Verdict verdict = new Verdict();
         verdict.setCompileStatus(status);
+        verdict.setSubmission(submission);
         return verdict;
     }
 

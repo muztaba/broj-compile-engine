@@ -23,9 +23,9 @@ public class Verdict {
     @Column(name = "verdict_id")
     private long id;
 
-/*    @Column(name = "submission")
     @OneToOne(targetEntity = Submission.class)
-    private Submission submission;*/
+    @JoinColumn(name = "submission", referencedColumnName = "submission_id")
+    private Submission submission;
 
     @Column(name = "verdict")
     @Enumerated(EnumType.STRING)
