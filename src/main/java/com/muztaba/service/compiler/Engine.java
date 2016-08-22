@@ -4,6 +4,8 @@ import com.muztaba.service.compiler.util.CompileStatus;
 import com.muztaba.service.compiler.util.DTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.concurrent.TimeUnit;
@@ -11,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by seal on 8/9/16.
  */
+@Service
 public class Engine {
     private static final Logger logger = LoggerFactory.getLogger(Compiler.class);
 
