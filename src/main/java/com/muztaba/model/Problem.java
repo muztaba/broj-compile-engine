@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by seal on 8/19/16.
@@ -27,14 +28,29 @@ public class Problem {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "time_limit", nullable = false)
+    private Long timeLimit;
+
+    @Column(name = "memory_limit", nullable = false)
+    private Long memoryLimit;
+
     @Column(name = "in_file", length = 100000)
     private byte[] inputFile;
 
     @Column(name = "res_file", length = 100000)
     private byte[] resultFile;
 
-
     @Column(name = "time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
+
+    public Long getTimeLimit() {
+        Objects.requireNonNull(timeLimit, "Time Limit should not be null");
+        return timeLimit;
+    }
+
+    public Long getMemoryLimit() {
+        Objects.requireNonNull(memoryLimit, "Memory Limit should not be null");
+        return memoryLimit;
+    }
 }
