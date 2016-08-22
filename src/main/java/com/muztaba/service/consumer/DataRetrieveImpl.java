@@ -37,7 +37,7 @@ public class DataRetrieveImpl implements DataRetrieve{
             List<Submission> submissions = submissionService.getSubmissionList(required);
             queue.add(submissions);
             List<Long> idList = submissions.stream()
-                    .map(i -> i.getId())
+                    .map(Submission::getId)
                     .collect(Collectors.toList());
 
             submissionService.submissionUpdate(idList);
