@@ -1,4 +1,4 @@
-package com.muztaba.service.processor;
+package com.muztaba.service.queue;
 
 import java.util.Collection;
 import java.util.List;

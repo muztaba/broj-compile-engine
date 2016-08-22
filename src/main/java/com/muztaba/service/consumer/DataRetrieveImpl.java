@@ -2,18 +2,14 @@ package com.muztaba.service.consumer;
 
 import com.muztaba.entity.Submission;
 import com.muztaba.service.entity.SubmissionService;
-import com.muztaba.service.processor.QueueService;
-import com.muztaba.util.FileUtil;
+import com.muztaba.service.queue.QueueService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.stream.Collectors;
 
 /**
