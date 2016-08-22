@@ -23,4 +23,20 @@ public class Language {
     public static boolean isThere(String lang) {
         return langSet.contains(lang);
     }
+
+    public static String langCheck(String lang) {
+        String str = null;
+        switch (lang.toLowerCase()) {
+            case CPP :
+                str = CPP;
+                break;
+            case JAVA :
+                str = JAVA;
+                break;
+            case C :
+                str = C;
+                break;
+        }
+        return str;
+    }
 }

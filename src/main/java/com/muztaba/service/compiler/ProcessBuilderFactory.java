@@ -14,7 +14,7 @@ public class ProcessBuilderFactory {
 
     public static ProcessBuilder getProcessBuilder(DTO dto) {
         ProcessBuilder processBuilder = null;
-        switch ("CPP".toLowerCase()) {
+        switch (dto.getLang()) {
             case Language.CPP :
                 processBuilder = new ProcessBuilder("g++", dto.getSrcName(true), "-o", dto.getSrcName(false));
                 break;
@@ -29,7 +29,7 @@ public class ProcessBuilderFactory {
     public static ProcessBuilder getExecutionProcessBuilder(DTO dto) {
         ProcessBuilder processBuilder = null;
 
-        switch ("CPP".toLowerCase()) {
+        switch (dto.getLang()) {
             case Language.CPP :
                 processBuilder = new ProcessBuilder("./" + dto.getSrcName(false));
                 break;

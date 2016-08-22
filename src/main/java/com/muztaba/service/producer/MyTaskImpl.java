@@ -2,6 +2,7 @@ package com.muztaba.service.producer;
 
 import com.muztaba.entity.Problem;
 import com.muztaba.entity.Submission;
+import com.muztaba.service.compiler.util.Language;
 import com.muztaba.service.entity.ProblemService;
 import com.muztaba.service.entity.SubmissionService;
 import com.muztaba.util.FileUtil;
@@ -33,10 +34,11 @@ public class MyTaskImpl implements MyTask {
     private static final Random r = new Random();
     private static final String SRC_PATH = "/home/seal/test/A.cpp";
 
-    @Scheduled(fixedDelay = 100)
+    @Scheduled(fixedDelay = 1000)
     public void scheduledTask() {
         Problem problem = problemService.load(r.nextInt(5) + 1);
         Submission submission = new Submission();
+        submission.setLang(Language.CPP);
         submission.setProblem(problem);
         submission.setUserName("seal-" + String.valueOf(++count));
         submission.setTime(new Date());

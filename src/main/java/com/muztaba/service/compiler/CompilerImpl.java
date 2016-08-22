@@ -4,6 +4,7 @@ import com.muztaba.entity.Submission;
 import com.muztaba.entity.Verdict;
 import com.muztaba.service.compiler.util.CompileStatus;
 import com.muztaba.service.compiler.util.DTO;
+import com.muztaba.service.compiler.util.Language;
 import com.muztaba.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,8 @@ public class CompilerImpl implements Compiler {
     private static final Logger logger = LoggerFactory.getLogger(CompilerImpl.class);
 
     private static final String WORKING_DIR = "/home/seal/test1/";
-    private static final String FILE_NAME = "A.cpp";
+    private static final String FILE_NAME_CPP = "A.cpp";
+    private static final String FILE_NAME_JAVA = "Main.java";
     private static final String INPUT_FILE = "input.txt";
     private static final String OUTPUT_FILE = "output.txt";
     private static final String RESULT_FILE = "res.txt";
@@ -64,9 +66,10 @@ public class CompilerImpl implements Compiler {
     }
 
     private void makeDTO() {
+        String fileName = Language.langCheck(submission.getLang()).equals(Language.CPP) ? FILE_NAME_CPP : FILE_NAME_JAVA;
         this.dto = new DTO(
-                submission.getLang(),
-                FILE_NAME,
+                submission.getLang().toLowerCase(),
+                fileName,
                 INPUT_FILE,
                 OUTPUT_FILE,
                 RESULT_FILE,
