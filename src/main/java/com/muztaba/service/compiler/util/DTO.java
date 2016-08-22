@@ -9,26 +9,28 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class DTO {
     private final String lang;
-    private final String srcPath;
-    private final String inputPath;
-    private final String outputFile;
+    private final String srcFileName;
+    private final String inputFileName;
+    private final String outputFileName;
     private final String resultFile;
     private final String workingDir;
+    private final long timeLimit;
+    private final long memoryLimit;
 
     public String getLang() {
         return lang.toLowerCase();
     }
 
     public String getSrcPath() {
-        return workingDir + "/" + srcPath;
+        return workingDir + "/" + srcFileName;
     }
 
-    public String getInputPath() {
-        return workingDir + "/" + inputPath;
+    public String getInputFilePath() {
+        return workingDir + "/" + inputFileName;
     }
 
-    public String getOutputFile() {
-        return workingDir + "/" + outputFile;
+    public String getOutputFilePath() {
+        return workingDir + "/" + outputFileName;
     }
 
     public String getWorkingDir() {
@@ -36,10 +38,25 @@ public class DTO {
     }
 
     public String getResultFilePath() {
-        return workingDir +"/" +resultFile;
+        return workingDir + "/" + resultFile;
     }
 
-    public String getSrcName() {
-        return srcPath;
+    public String getSrcName(boolean var) {
+        String f = null;
+        if (var) {
+            f = srcFileName;
+        } else {
+            String[] strings = srcFileName.split("\\.");
+            f = strings[0];
+        }
+        return f;
+    }
+
+    public long getTimeLimit() {
+        return timeLimit;
+    }
+
+    public long getMemoryLimit() {
+        return memoryLimit;
     }
 }

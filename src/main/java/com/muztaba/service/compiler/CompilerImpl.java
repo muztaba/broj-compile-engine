@@ -20,7 +20,7 @@ public class CompilerImpl implements Compiler {
     private static final String WORKING_DIR = "/home/seal/test1/";
     private static final String FILE_NAME = "A.cpp";
     private static final String INPUT_FILE = "input.txt";
-    private static final String OUTPUT_FILE_PATH = "output.txt";
+    private static final String OUTPUT_FILE = "output.txt";
     private static final String RESULT_FILE = "res.txt";
     private DTO dto;
 
@@ -35,7 +35,7 @@ public class CompilerImpl implements Compiler {
         logger.info("Compile Status{}", compileStatus);
 
         ProcessBuilder execute = ProcessBuilderFactory.getExecutionProcessBuilder(dto);
-        CompileStatus status = engine.execute(execute);
+        CompileStatus status = engine.execute(execute, dto);
         logger.info("Execution Status {}", status);
 
         Verdict verdict = new Verdict();
@@ -49,9 +49,11 @@ public class CompilerImpl implements Compiler {
                 submission.getLang(),
                 FILE_NAME,
                 INPUT_FILE,
-                OUTPUT_FILE_PATH,
+                OUTPUT_FILE,
                 RESULT_FILE,
-                WORKING_DIR + submission.getId()
+                WORKING_DIR + submission.getId(),
+                submission.getProblem().getTimeLimit(),
+                submission.getProblem().getMemoryLimit()
         );
     }
 }

@@ -16,10 +16,10 @@ public class ProcessBuilderFactory {
         ProcessBuilder processBuilder = null;
         switch ("CPP".toLowerCase()) {
             case Language.CPP :
-                processBuilder = new ProcessBuilder("g++", dto.getSrcName(), "-o", "A");
+                processBuilder = new ProcessBuilder("g++", dto.getSrcName(true), "-o", dto.getSrcName(false));
                 break;
             case Language.JAVA :
-//                processBuilder = new ProcessBuilder("javac", fileName);
+                processBuilder = new ProcessBuilder("javac", dto.getSrcName(true));
                 break;
         }
         processBuilder.directory(new File(dto.getWorkingDir()));
@@ -31,15 +31,15 @@ public class ProcessBuilderFactory {
 
         switch ("CPP".toLowerCase()) {
             case Language.CPP :
-                processBuilder = new ProcessBuilder("./" + "A");
+                processBuilder = new ProcessBuilder("./" + dto.getSrcName(false));
                 break;
             case Language.JAVA :
-//                processBuilder = new ProcessBuilder("java", "-cp", ".", fileName);
+                processBuilder = new ProcessBuilder("java", "-cp", ".", dto.getSrcName(false));
                 break;
         }
 
         processBuilder.directory(new File(dto.getWorkingDir()));
-        processBuilder.redirectInput(new File(dto.getInputPath()));
+        processBuilder.redirectInput(new File(dto.getInputFilePath()));
         processBuilder.redirectOutput(new File(dto.getResultFilePath()));
 
         return processBuilder;

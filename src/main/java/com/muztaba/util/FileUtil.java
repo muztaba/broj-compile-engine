@@ -41,7 +41,7 @@ public class FileUtil {
 
         FileUtil.createDirectory(dto.getWorkingDir());
         FileUtil.writeByteToFile(submission.getSrcFile(), dto.getSrcPath());
-        FileUtil.writeByteToFile(submission.getProblem().getInputFile(), dto.getInputPath());
-        FileUtil.writeByteToFile(submission.getProblem().getResultFile(), dto.getOutputFile());
+        FileUtil.writeByteToFile(submission.getProblem().getInputFile(), dto.getInputFilePath());
+        FileUtil.writeByteToFile(submission.getProblem().getResultFile(), dto.getOutputFilePath());
     }
 }

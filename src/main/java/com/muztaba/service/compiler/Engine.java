@@ -1,6 +1,7 @@
 package com.muztaba.service.compiler;
 
 import com.muztaba.service.compiler.util.CompileStatus;
+import com.muztaba.service.compiler.util.DTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,10 +18,7 @@ public class Engine {
 
     public CompileStatus compile(ProcessBuilder processBuilder) {
         logger.info("Code compilation started...");
-//        logger.debug("fileLocation, {}", fileLocation);
-//        logger.info("file location, {}", fileLocation);
         boolean compiled = true;
-//        processBuilder.directory(new File(fileLocation));
         processBuilder.redirectErrorStream(true);
 
         try {
@@ -47,14 +45,14 @@ public class Engine {
         return CompileStatus.COMPILE_ERROR;
     }
 
-    public CompileStatus execute(ProcessBuilder processBuilder) {
+    public CompileStatus execute(ProcessBuilder processBuilder, DTO dto) {
         logger.info("Execution started");
 
         processBuilder.redirectErrorStream(true);
 
         try {
             Process process = processBuilder.start();
-            if (!process.waitFor(2000, TimeUnit.MILLISECONDS))
+            if (!process.waitFor(dto.getTimeLimit(), TimeUnit.MILLISECONDS))
                 return CompileStatus.TIME_LIMIT_EXIT;
             int exitCode = process.exitValue();
             if (exitCode != 0) {
