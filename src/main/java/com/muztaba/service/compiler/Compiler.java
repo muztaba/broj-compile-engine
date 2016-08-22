@@ -1,7 +1,7 @@
 package com.muztaba.service.compiler;
 
-import com.muztaba.model.Submission;
-import com.muztaba.model.Verdict;
+import com.muztaba.entity.Submission;
+import com.muztaba.entity.Verdict;
 
 
 /**

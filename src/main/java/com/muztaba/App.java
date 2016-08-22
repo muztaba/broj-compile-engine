@@ -1,18 +1,15 @@
 package com.muztaba;
 
 import com.muztaba.config.AppConfig;
-import com.muztaba.model.Problem;
-import com.muztaba.model.Submission;
-import com.muztaba.model.Verdict;
-import com.muztaba.service.ProblemService;
-import com.muztaba.service.VerdictService;
-import com.muztaba.service.VerdictServiceImpl;
+import com.muztaba.entity.Problem;
+import com.muztaba.entity.Submission;
+import com.muztaba.entity.Verdict;
+import com.muztaba.service.entity.ProblemService;
+import com.muztaba.service.entity.VerdictService;
 import com.muztaba.service.compiler.Compiler;
 import com.muztaba.service.compiler.CompilerImpl;
 import com.muztaba.service.processor.QueueImpl;
 import com.muztaba.service.processor.QueueService;
-import com.muztaba.service.producer.MyTask;
-import com.muztaba.service.producer.MyTaskImpl;
 import com.muztaba.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

@@ -1,4 +1,4 @@
-package com.muztaba.model;
+package com.muztaba.entity;
 
 import com.muztaba.service.compiler.util.CompileStatus;
 import lombok.AccessLevel;

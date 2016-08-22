@@ -1,9 +1,9 @@
 package com.muztaba.service.producer;
 
-import com.muztaba.model.Problem;
-import com.muztaba.model.Submission;
-import com.muztaba.service.ProblemService;
-import com.muztaba.service.SubmissionService;
+import com.muztaba.entity.Problem;
+import com.muztaba.entity.Submission;
+import com.muztaba.service.entity.ProblemService;
+import com.muztaba.service.entity.SubmissionService;
 import com.muztaba.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

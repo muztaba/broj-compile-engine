@@ -1,9 +1,5 @@
 package com.muztaba.config;
 
-import com.muztaba.service.VerdictServiceImpl;
-import com.muztaba.service.producer.MyTask;
-import com.muztaba.service.producer.MyTaskImpl;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;

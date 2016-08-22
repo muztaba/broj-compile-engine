@@ -1,6 +1,6 @@
-package com.muztaba.service;
+package com.muztaba.service.entity;
 
-import com.muztaba.model.Problem;
+import com.muztaba.entity.Problem;
 
 /**
  * Created by seal on 8/19/16.

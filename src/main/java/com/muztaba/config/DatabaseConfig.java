@@ -1,9 +1,9 @@
 package com.muztaba.config;
 
-import com.muztaba.model.Problem;
-import com.muztaba.model.Submission;
-import com.muztaba.model.User;
-import com.muztaba.model.Verdict;
+import com.muztaba.entity.Problem;
+import com.muztaba.entity.Submission;
+import com.muztaba.entity.User;
+import com.muztaba.entity.Verdict;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

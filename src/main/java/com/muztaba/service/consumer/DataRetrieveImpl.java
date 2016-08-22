@@ -1,8 +1,7 @@
 package com.muztaba.service.consumer;
 
-import com.muztaba.model.Submission;
-import com.muztaba.service.SubmissionService;
-import com.muztaba.service.UserService;
+import com.muztaba.entity.Submission;
+import com.muztaba.service.entity.SubmissionService;
 import com.muztaba.service.processor.QueueService;
 import com.muztaba.util.FileUtil;
 import org.slf4j.Logger;

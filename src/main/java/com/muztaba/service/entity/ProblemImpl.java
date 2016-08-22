@@ -1,6 +1,6 @@
-package com.muztaba.service;
+package com.muztaba.service.entity;
 
-import com.muztaba.model.Problem;
+import com.muztaba.entity.Problem;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

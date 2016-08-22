@@ -1,4 +1,4 @@
-package com.muztaba.model;
+package com.muztaba.entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

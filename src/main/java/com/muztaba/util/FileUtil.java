@@ -1,6 +1,6 @@
 package com.muztaba.util;
 
-import com.muztaba.model.Submission;
+import com.muztaba.entity.Submission;
 import com.muztaba.service.compiler.util.DTO;
 
 import java.io.IOException;

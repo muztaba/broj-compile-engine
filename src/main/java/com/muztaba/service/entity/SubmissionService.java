@@ -1,6 +1,6 @@
-package com.muztaba.service;
+package com.muztaba.service.entity;
 
-import com.muztaba.model.Submission;
+import com.muztaba.entity.Submission;
 
 import java.util.List;
 
