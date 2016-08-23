@@ -14,6 +14,7 @@ import com.muztaba.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
@@ -32,12 +33,17 @@ public class App {
 //    @Autowired
     VerdictService verdictService;
 
+//    @Autowired
+    Environment env;
+
     public static void main( String[] args ) {
         new App().task();
     }
 
     private void task() {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        env = context.getEnvironment();
+        System.out.println("********************" + env.getProperty("name"));
         queue =  context.getBean(QueueImpl.class);
         compiler = context.getBean(CompilerImpl.class);
         verdictService = (VerdictService) context.getBean("verdictServiceImpl");
