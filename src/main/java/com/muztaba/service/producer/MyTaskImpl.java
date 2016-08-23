@@ -32,13 +32,13 @@ public class MyTaskImpl implements MyTask {
     private long count;
 
     private static final Random r = new Random();
-    private static final String SRC_PATH = "/home/seal/test/A.cpp";
+    private static final String SRC_PATH = "/home/seal/test/B.java";
 
     @Scheduled(fixedDelay = 1000)
     public void scheduledTask() {
         Problem problem = problemService.load(r.nextInt(5) + 1);
         Submission submission = new Submission();
-        submission.setLang(Language.CPP);
+        submission.setLang(Language.JAVA);
         submission.setProblem(problem);
         submission.setUserName("seal-" + String.valueOf(++count));
         submission.setTime(new Date());

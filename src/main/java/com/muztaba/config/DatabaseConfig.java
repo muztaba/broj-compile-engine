@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -28,11 +27,16 @@ public class DatabaseConfig {
     @Autowired
     private ApplicationContext appContext;
 
-    @Value("${db.name}") private String dbName;
-    @Value("${db.user}") private String user;
-    @Value("${db.password}") private String password;
-    @Value("${db.server.port}") private int  serverPort;
-    @Value("${db.server.name}") private String serverName;
+    @Value("${db.name}")
+    private String dbName;
+    @Value("${db.user}")
+    private String user;
+    @Value("${db.password}")
+    private String password;
+    @Value("${db.server.port}")
+    private int serverPort;
+    @Value("${db.server.name}")
+    private String serverName;
 
 
     @Bean(name = "DataSource")

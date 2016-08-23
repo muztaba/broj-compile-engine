@@ -9,6 +9,7 @@ import com.muztaba.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,12 +20,18 @@ public class CompilerImpl implements Compiler {
 
     private static final Logger logger = LoggerFactory.getLogger(CompilerImpl.class);
 
-    private static final String WORKING_DIR = "/home/seal/test1/";
-    private static final String FILE_NAME_CPP = "A.cpp";
-    private static final String FILE_NAME_JAVA = "Main.java";
-    private static final String INPUT_FILE = "input.txt";
-    private static final String OUTPUT_FILE = "output.txt";
-    private static final String RESULT_FILE = "res.txt";
+    @Value("${working.dir}")
+    private String WORKING_DIR;
+    @Value("${file.name.cpp}")
+    private String FILE_NAME_CPP;
+    @Value("${file.name.java}")
+    private String FILE_NAME_JAVA;
+    @Value("${file.name.input}")
+    private String INPUT_FILE;
+    @Value("${file.name.output}")
+    private String OUTPUT_FILE;
+    @Value("${file.name.result}")
+    private String RESULT_FILE;
 
     @Autowired
     Engine engine;
