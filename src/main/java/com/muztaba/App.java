@@ -33,17 +33,12 @@ public class App {
 //    @Autowired
     VerdictService verdictService;
 
-//    @Autowired
-    Environment env;
-
     public static void main( String[] args ) {
         new App().task();
     }
 
     private void task() {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        env = context.getEnvironment();
-        System.out.println("********************" + env.getProperty("name"));
         queue =  context.getBean(QueueImpl.class);
         compiler = context.getBean(CompilerImpl.class);
         verdictService = (VerdictService) context.getBean("verdictServiceImpl");

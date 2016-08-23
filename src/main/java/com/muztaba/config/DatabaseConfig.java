@@ -6,11 +6,13 @@ import com.muztaba.entity.User;
 import com.muztaba.entity.Verdict;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -26,10 +28,16 @@ public class DatabaseConfig {
     @Autowired
     private ApplicationContext appContext;
 
+    @Value("${db.name}") private String dbName;
+    @Value("${db.user}") private String user;
+    @Value("${db.password}") private String password;
+    @Value("${db.server.port}") private int  serverPort;
+    @Value("${db.server.name}") private String serverName;
+
 
     @Bean(name = "DataSource")
     public HikariDataSource dataSourceWinMac() {
-        return getDataSource("127.0.0.1", "root", "seal", 3306,"broj");
+        return getDataSource(serverName, user, password, serverPort, dbName);
     }
 
     private HikariDataSource getDataSource(String serverName, String user, String password, int port, String dbName) {
