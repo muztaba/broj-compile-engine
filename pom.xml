@@ -19,6 +19,7 @@
     <slf4j>1.7.16</slf4j>
     <jackson>2.7.3</jackson>
     <kotlin.version>1.0.1-2</kotlin.version>
+    <diff-patch-match>1.1</diff-patch-match>
   </properties>
   <dependencies>
       <dependency>
@@ -70,6 +71,19 @@
       <scope>provided</scope>
     </dependency>
 
+    <!--File diff package from google-->
+    <dependency>
+      <groupId>org.bitbucket.cowwoc</groupId>
+      <artifactId>diff-match-patch</artifactId>
+      <version>${diff-patch-match}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>19.0</version>
+    </dependency>
 
     <!--Database Connection pool-->
     <dependency>

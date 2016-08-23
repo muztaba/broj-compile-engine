@@ -15,9 +15,9 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class Engine {
-    private static final Logger logger = LoggerFactory.getLogger(Compiler.class);
 
-    private static final String outputFileName = "/output.txt";
+    private static final Logger logger = LoggerFactory.getLogger(Engine.class);
+
 
     public CompileStatus compile(ProcessBuilder processBuilder) {
         logger.info("Code compilation started...");

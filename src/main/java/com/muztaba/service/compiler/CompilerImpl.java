@@ -2,6 +2,7 @@ package com.muztaba.service.compiler;
 
 import com.muztaba.entity.Submission;
 import com.muztaba.entity.Verdict;
+import com.muztaba.service.compiler.diff.DiffChecker;
 import com.muztaba.service.compiler.util.CompileStatus;
 import com.muztaba.service.compiler.util.DTO;
 import com.muztaba.service.compiler.util.Language;
@@ -36,6 +37,9 @@ public class CompilerImpl implements Compiler {
     @Autowired
     Engine engine;
 
+    @Autowired
+    DiffChecker diffChecker;
+
     private Submission submission;
 
     private DTO dto;
@@ -59,6 +63,11 @@ public class CompilerImpl implements Compiler {
             logger.info("Execution Status {}", status);
             if (status != CompileStatus.EXECUTION_SUCCESS)
                 flow = false;
+        }
+
+        if (flow) {
+            status = diffCheck();
+            logger.info("Diff checker, {}", status);
         }
 
         Verdict verdict = new Verdict();
@@ -85,4 +94,11 @@ public class CompilerImpl implements Compiler {
                 submission.getProblem().getMemoryLimit()
         );
     }
+
+    private CompileStatus diffCheck() {
+        String codeResult = FileUtil.fileToString(dto.getResultFilePath());
+        String judgeOutput = FileUtil.fileToString(dto.getOutputFilePath());
+        return diffChecker.check(codeResult, judgeOutput);
+    }
+
 }
