@@ -43,14 +43,4 @@ public class Problem {
     @Column(name = "time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
-
-    public Long getTimeLimit() {
-        Objects.requireNonNull(timeLimit, "Time Limit should not be null");
-        return timeLimit;
-    }
-
-    public Long getMemoryLimit() {
-        Objects.requireNonNull(memoryLimit, "Memory Limit should not be null");
-        return memoryLimit;
-    }
 }
