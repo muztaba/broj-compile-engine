@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
+//@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class VerdictServiceImpl implements VerdictService {
 
     @Autowired
