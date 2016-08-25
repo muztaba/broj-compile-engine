@@ -28,11 +28,8 @@ public class Submission {
     @Column(name = "status")
     private boolean status;
 
-/*    @Column(name = "problem_id")
-    private long problemId;*/
-
     @ManyToOne(optional = false)
-    @JoinColumn(referencedColumnName = "problem_id")
+    @JoinColumn(name = "problem_id", referencedColumnName = "problem_id")
     private Problem problem;
 
     @Column(name = "language")
