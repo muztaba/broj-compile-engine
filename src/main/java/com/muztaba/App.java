@@ -5,6 +5,7 @@ import com.muztaba.entity.Submission;
 import com.muztaba.entity.Verdict;
 import com.muztaba.service.entity.VerdictService;
 import com.muztaba.service.compiler.Compiler;
+import com.muztaba.service.producer.DummyProblem;
 import com.muztaba.service.queue.QueueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -27,6 +28,9 @@ public class App {
     @Autowired
     VerdictService verdictService;
 
+    @Autowired
+    DummyProblem dummyProblem; //false data insert to problem table
+
     public static void main( String[] args ) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         App app = context.getBean(App.class);
@@ -43,24 +47,5 @@ public class App {
         }
     }
 
-/*//    @Autowired
-    ProblemService problemService;
-    private  void fileInject() {
-        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        problemService = (ProblemService) context.getBean("problemImpl");
-        String input = "/home/seal/test/input.txt";
-        String res = "/home/seal/test/output.txt";
-        for (int i = 0; i < 5; i++) {
-            int id = i + 1;
-            Problem problem = new Problem();
-            problem.setName("seal " + String.valueOf(id));
-            problem.setTimeLimit(2000L);
-            problem.setMemoryLimit(2000L);
-            problem.setTime(new Date());
-            problem.setInputFile(FileUtil.readFileAsByte(input));
-            problem.setResultFile(FileUtil.readFileAsByte(res));
-            problemService.post(problem);
-        }
-    }*/
 
 }
