@@ -1,6 +1,6 @@
-package com.muztaba.service;
+package com.muztaba.service.entity;
 
-import com.muztaba.model.User;
+import com.muztaba.entity.User;
 
 import java.util.List;
 

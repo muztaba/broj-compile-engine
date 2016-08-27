@@ -1,7 +1,6 @@
-package com.muztaba.service;
+package com.muztaba.service.entity;
 
-import com.muztaba.model.User;
-import org.hibernate.Query;
+import com.muztaba.entity.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;

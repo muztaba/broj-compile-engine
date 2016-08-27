@@ -1,8 +1,12 @@
 package com.muztaba.config;
 
-import com.muztaba.model.User;
+import com.muztaba.entity.Problem;
+import com.muztaba.entity.Submission;
+import com.muztaba.entity.User;
+import com.muztaba.entity.Verdict;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +18,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
- * Created by sazzad on 9/7/15
+ * Created by seal on 22/8/16
  */
 @Configuration
 @EnableTransactionManagement
@@ -23,10 +27,21 @@ public class DatabaseConfig {
     @Autowired
     private ApplicationContext appContext;
 
+    @Value("${db.name}")
+    private String dbName;
+    @Value("${db.user}")
+    private String user;
+    @Value("${db.password}")
+    private String password;
+    @Value("${db.server.port}")
+    private int serverPort;
+    @Value("${db.server.name}")
+    private String serverName;
+
 
     @Bean(name = "DataSource")
     public HikariDataSource dataSourceWinMac() {
-        return getDataSource("127.0.0.1", "root", "seal", 3306,"broj");
+        return getDataSource(serverName, user, password, serverPort, dbName);
     }
 
     private HikariDataSource getDataSource(String serverName, String user, String password, int port, String dbName) {
@@ -52,12 +67,17 @@ public class DatabaseConfig {
     public LocalSessionFactoryBean hibernate5SessionFactoryBean() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource((DataSource) appContext.getBean("DataSource"));
-        localSessionFactoryBean.setAnnotatedClasses(User.class);
+        localSessionFactoryBean.setAnnotatedClasses(
+                User.class,
+                Problem.class,
+                Submission.class,
+                Verdict.class
+        );
 
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         //properties.put("hibernate.current_session_context_class","thread");
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
 
         localSessionFactoryBean.setHibernateProperties(properties);
         return localSessionFactoryBean;
