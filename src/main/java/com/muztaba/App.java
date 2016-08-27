@@ -34,7 +34,7 @@ public class App {
     public static void main( String[] args ) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         App app = context.getBean(App.class);
-        app.task();
+//        app.task();
     }
 
     private void task() {

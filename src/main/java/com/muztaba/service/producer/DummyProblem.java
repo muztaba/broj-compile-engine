@@ -22,12 +22,12 @@ public class DummyProblem {
         for (int i = 0; i < upTo; i++) {
             int id = i + 1;
             Problem problem = new Problem();
-            problem.setName("seal " + String.valueOf(id));
+//            problem.setName("seal " + String.valueOf(id));
             problem.setTimeLimit(2000L);
             problem.setMemoryLimit(2000L);
             problem.setTime(new Date());
-            problem.setInputFile(FileUtil.readFileAsByte(input));
-            problem.setResultFile(FileUtil.readFileAsByte(res));
+//            problem.setInputFile(FileUtil.readFileAsByte(input));
+//            problem.setResultFile(FileUtil.readFileAsByte(res));
             problemService.post(problem);
         }
     }

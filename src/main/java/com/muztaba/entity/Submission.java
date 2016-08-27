@@ -22,23 +22,38 @@ public class Submission {
     @Column(name = "submission_id")
     private long id;
 
-    @Column(name = "username")
-    private String userName;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "contest_id", referencedColumnName = "contest_id")
+    private Contests contests;
+
+    @Column(name = "contest_id", updatable = false, insertable = false)
+    private long contestFK;
 
     @Column(name = "status")
     private boolean status;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "problem_id", referencedColumnName = "problem_id")
     private Problem problem;
 
     @Column(name = "language")
     private String lang;
 
-    @Column(name = "src_file", length = 100000)
+    @Column(name = "source_code", length = 100000)
     private byte[] srcFile;
 
-    @Column(name = "time")
+    @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
+
+    @Column(name = "updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updated;
+
+    @Column(name = "remember_token")
+    private String rememberToken;
 }

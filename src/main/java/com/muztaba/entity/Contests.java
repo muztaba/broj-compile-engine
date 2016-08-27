@@ -1,6 +1,5 @@
 package com.muztaba.entity;
 
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,30 +9,36 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by seal on 8/13/2016.
+ * Created by seal on 8/28/2016.
  */
+
 @Entity
-@Table(name = "users")
+@Table(name = "contests")
 @Data
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class User {
+public class Contests {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private long id;
+    @Column(name = "contest_id")
+    private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "contest_name")
+    private String contestName;
 
-    @Column(name = "username")
-    private String userName;
+    @Column(name = "contest_author")
+    private String contest_author;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "start_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startTime; //java.sql.Timestamp
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "end_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endTime;
+
+    @Column(name = "duration")
+    private Long duration;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -45,4 +50,5 @@ public class User {
 
     @Column(name = "remember_token")
     private String rememberToken;
+
 }

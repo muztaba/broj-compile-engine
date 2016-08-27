@@ -1,9 +1,6 @@
 package com.muztaba.config;
 
-import com.muztaba.entity.Problem;
-import com.muztaba.entity.Submission;
-import com.muztaba.entity.User;
-import com.muztaba.entity.Verdict;
+import com.muztaba.entity.*;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,7 +68,8 @@ public class DatabaseConfig {
                 User.class,
                 Problem.class,
                 Submission.class,
-                Verdict.class
+                Verdict.class,
+                Contests.class
         );
 
         Properties properties = new Properties();

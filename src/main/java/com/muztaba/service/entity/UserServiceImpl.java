@@ -42,7 +42,6 @@ public class UserServiceImpl implements UserService {
     public void usersUpdate(List<Long> list) {
         for (Long i : list) {
             User user = sessionFactory.getCurrentSession().load(User.class, i);
-            user.setStatus(true);
             sessionFactory.getCurrentSession().update(user);
         }
     }

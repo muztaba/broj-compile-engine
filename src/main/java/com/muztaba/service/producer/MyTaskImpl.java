@@ -36,13 +36,13 @@ public class MyTaskImpl implements MyTask {
 
     @Scheduled(fixedDelay = 1000)
     public void scheduledTask() {
-        Problem problem = problemService.load(r.nextInt(5) + 1);
+/*        Problem problem = problemService.load(r.nextInt(5) + 1);
         Submission submission = new Submission();
         submission.setLang(Language.JAVA);
         submission.setProblem(problem);
-        submission.setUserName("seal-" + String.valueOf(++count));
+//        submission.setUserName("seal-" + String.valueOf(++count));
         submission.setTime(new Date());
         submission.setSrcFile(FileUtil.readFileAsByte(SRC_PATH));
-        submissionService.post(submission);
+        submissionService.post(submission);*/
     }
 }
