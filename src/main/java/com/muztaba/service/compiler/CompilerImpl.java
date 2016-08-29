@@ -73,6 +73,8 @@ public class CompilerImpl implements Compiler {
         Verdict verdict = new Verdict();
         verdict.setCompileStatus(status);
         verdict.setSubmission(submission);
+        verdict.setExecutionMemory(0l);
+        verdict.setExecutionTime(0l);
         return verdict;
     }
 
