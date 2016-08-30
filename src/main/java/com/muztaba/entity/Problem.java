@@ -15,7 +15,7 @@ import java.util.Objects;
  * Created by seal on 8/19/16.
  */
 @Entity
-@Table(name = "problem")
+@Table(name = "problems")
 @Data
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)

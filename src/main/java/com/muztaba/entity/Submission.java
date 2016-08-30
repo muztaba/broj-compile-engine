@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by seal on 8/19/16.
  */
 @Entity
-@Table(name = "submission")
+@Table(name = "submissions")
 @Data
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
