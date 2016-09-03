@@ -59,12 +59,7 @@ public class App {
                 if (list.size() != 0) {
                     first = false;
                     for (Submission s : list) {
-                        completionService.submit(new Callable<Verdict>() {
-                            @Override
-                            public Verdict call() throws Exception {
-                                return compiler.submit(s);
-                            }
-                        });
+                        completionService.submit(() -> compiler.submit(s));
                     }
                 }
             }
@@ -72,12 +67,7 @@ public class App {
             if (!first & !queue.isEmpty()) {
                 Submission submission = queue.get();
                 logger.info("Add to thread, {}", submission);
-                completionService.submit(new Callable<Verdict>() {
-                    @Override
-                    public Verdict call() throws Exception {
-                        return compiler.submit(submission);
-                    }
-                });
+                completionService.submit(() -> compiler.submit(submission));
             }
 
             try {
