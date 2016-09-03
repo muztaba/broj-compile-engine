@@ -25,6 +25,8 @@ public class CompilerImpl implements Compiler {
     private String WORKING_DIR;
     @Value("${file.name.cpp}")
     private String FILE_NAME_CPP;
+    @Value("${file.name.c}")
+    private String FILE_NAME_C;
     @Value("${file.name.java}")
     private String FILE_NAME_JAVA;
     @Value("${file.name.input}")
@@ -84,7 +86,7 @@ public class CompilerImpl implements Compiler {
     }
 
     private void makeDTO() {
-        String fileName = Language.langCheck(submission.getLang()).equals(Language.CPP) ? FILE_NAME_CPP : FILE_NAME_JAVA;
+        String fileName = Language.langCheck(submission.getLang());
         this.dto = new DTO(
                 submission.getLang().toLowerCase(),
                 fileName,

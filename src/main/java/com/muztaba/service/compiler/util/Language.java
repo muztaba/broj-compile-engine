@@ -1,5 +1,7 @@
 package com.muztaba.service.compiler.util;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +12,13 @@ public class Language {
     public static final String JAVA = "java";
     public static final String CPP = "cpp";
     public static final String C = "c";
+
+    @Value("${file.name.cpp}")
+    private static String FILE_NAME_CPP;
+    @Value("${file.name.c}")
+    private static String FILE_NAME_C;
+    @Value("${file.name.java}")
+    private static String FILE_NAME_JAVA;
 
     private static final Set<String> langSet = new HashSet<>();
 
@@ -28,13 +37,13 @@ public class Language {
         String str = null;
         switch (lang.toLowerCase()) {
             case CPP :
-                str = CPP;
+                str = FILE_NAME_CPP;
                 break;
             case JAVA :
-                str = JAVA;
+                str = FILE_NAME_JAVA;
                 break;
             case C :
-                str = C;
+                str = FILE_NAME_C;
                 break;
         }
         return str;

@@ -18,6 +18,9 @@ public class ProcessBuilderFactory {
             case Language.CPP :
                 processBuilder = new ProcessBuilder("g++", dto.getSrcName(true), "-o", dto.getSrcName(false));
                 break;
+            case Language.C :
+                processBuilder = new ProcessBuilder("gcc", dto.getSrcName(true), "-o", dto.getSrcName(false));
+                break;
             case Language.JAVA :
                 processBuilder = new ProcessBuilder("javac", dto.getSrcName(true));
                 break;
@@ -31,6 +34,7 @@ public class ProcessBuilderFactory {
 
         switch (dto.getLang()) {
             case Language.CPP :
+            case Language.C :
                 processBuilder = new ProcessBuilder("./" + dto.getSrcName(false));
                 break;
             case Language.JAVA :
